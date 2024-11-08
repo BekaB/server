@@ -52,13 +52,13 @@ app.get('/weather', (req, res) => {
     geocode(req.query.address, (error, {latitude, longitudie, location} = {})=>{
         //console.log('Error', error)
         if(error){
-            return res.send({Error: 'You Must Provide Address'})
+            return res.send({Error: 'Address Not Found , Try Another Search'})
             //console.log('error')
         }
         forecast(latitude, longitudie, (error,forecastdata) => {
             //console.log('Error', error)
             if(error){ 
-                return res.send({Error: 'You Must Provide Address'})
+                return res.send({Error: 'Forecast Not Found , Try Another Search'})
                 //console.log(error)
             }
             res.send({
